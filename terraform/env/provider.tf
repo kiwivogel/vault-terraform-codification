@@ -1,3 +1,3 @@
 provider "vault" {
-	address = "http://vagrant:8222"
+	address = "http://vagrant:8220"
 }
