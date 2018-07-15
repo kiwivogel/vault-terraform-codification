@@ -10,8 +10,8 @@ path "transit/environments/vagrant/decrypt/testapp" {
   capabilities = ["create", "update"]
 }
 
-path "auth/token/renew/*" {
-  policy = "write"
+path "auth/token/renew-self" {
+  capabilities = ["update"]
 }
 EOT
 }
@@ -24,9 +24,7 @@ resource "vault_auth_backend" "vagrant-approle" {
 }
 
 resource "vault_approle_auth_backend_role" "vagant-testapp-role" {
-
 	backend   = "${vault_auth_backend.vagrant-approle.path}"
 	role_name = "vagrant-test-app"
 	policies  = ["vagrant-testapp"]
-
 }
